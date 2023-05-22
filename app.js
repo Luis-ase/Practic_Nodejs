@@ -1,19 +1,23 @@
 
-const {inquirerMenu, pause} = require("./menu/inquirer")
+const {inquirerMenu, pause ,leerinput} = require("./menu/inquirer")
 const Tarea = require("./model/tarea")
 const Tareas = require("./model/tareas")
 
 const main = async () =>{
     console.clear()
     let output = ""
-   
+    const tareas = new Tareas()
     while(output.option !=="0"){
-        // output = await inquirerMenu()
-        const tarea = new Tarea("Comprar comida");
-        const tareas = new Tareas()
-        tareas._listado[tarea.id] =tarea
-        console.log(tarea)
-        console.log(tareas)
+        output = await inquirerMenu()
+        switch(output.option){
+            case 1:
+                const desc= await leerinput("Description: ")
+                if(desc.descrip){
+                    tareas.crearTarea(desc.descrip)
+                    console.log(tareas)
+                }
+            break;
+        }
         await pause()
         if(output.option !=="0"){
             console.log(output)
