@@ -1,4 +1,5 @@
 
+const guardarDB = require("./brackets/read_save")
 const {inquirerMenu, pause ,leerinput} = require("./menu/inquirer")
 const Tarea = require("./model/tarea")
 const Tareas = require("./model/tareas")
@@ -20,6 +21,8 @@ const main = async () =>{
                 console.log(tareas.listadoArr)    
             break;
         }
+
+        // guardarDB(tareas.listadoArr)
         await pause()
         if(output.option !=="0"){
             console.log(output)
