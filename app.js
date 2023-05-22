@@ -16,6 +16,8 @@ const main = async () =>{
                     tareas.crearTarea(desc.descrip)
                     console.log(tareas)
                 }
+            case 2:
+                console.log(tareas.listadoArr)    
             break;
         }
         await pause()
