@@ -1,5 +1,5 @@
 
-const guardarDB = require("./brackets/read_save")
+const {guardarDB,leerDB} = require("./brackets/read_save")
 const {inquirerMenu, pause ,leerinput} = require("./menu/inquirer")
 const Tarea = require("./model/tarea")
 const Tareas = require("./model/tareas")
@@ -8,6 +8,11 @@ const main = async () =>{
     console.clear()
     let output = ""
     const tareas = new Tareas()
+    const tareas_db = leerDB()
+    if(tareas_db){
+    }
+    await pause()
+
     while(output.option !=="0"){
         output = await inquirerMenu()
         switch(output.option){
@@ -22,13 +27,12 @@ const main = async () =>{
             break;
         }
 
-        // guardarDB(tareas.listadoArr)
+        //  guardarDB(tareas.listadoArr)
         await pause()
         if(output.option !=="0"){
             console.log(output)
         }
     }    
-        // await pause()
     
 
 }
