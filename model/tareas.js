@@ -57,6 +57,9 @@ class Tareas {
         })
 
     }
+    borrarTarea(){
+        console.log("hola")
+    }
 }
 
 module.exports = Tareas
