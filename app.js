@@ -1,7 +1,6 @@
-
 const {guardarDB,leerDB} = require("./brackets/read_save")
 const {inquirerMenu, pause ,leerinput} = require("./menu/inquirer")
-const Tarea = require("./model/tarea")
+
 const Tareas = require("./model/tareas")
 
 const main = async () =>{
@@ -10,7 +9,7 @@ const main = async () =>{
     const tareas = new Tareas()
     const tareas_db = leerDB()
     if(tareas_db){
-        tareas.cargarTareasFromArray( tareas_db)
+        tareas.cargarTareasFromArray(tareas_db)
     }
     await pause()
 
@@ -21,18 +20,21 @@ const main = async () =>{
                 const desc= await leerinput("Description: ")
                 if(desc.descrip){
                     tareas.crearTarea(desc.descrip)
-                    console.log(tareas)
                 }
+                break
             case 2:
-                tareas.listadoCompleto()  
+                tareas.listadoCompleto()
+                break
+            case 3:
+                tareas.listadoPendienteCompletados(true)
+                break
+            case 4:
+                tareas.listadoPendienteCompletados(false)  
             break;
         }
 
           guardarDB(tareas.listadoArr)
-        await pause()
-        if(output.option !=="0"){
-            console.log(output)
-        }
+          await pause()
     }    
     
 
