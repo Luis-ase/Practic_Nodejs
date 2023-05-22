@@ -24,7 +24,7 @@ const main = async () =>{
                     console.log(tareas)
                 }
             case 2:
-                console.log(tareas.listadoArr)    
+                tareas.listadoCompleto()  
             break;
         }
 
