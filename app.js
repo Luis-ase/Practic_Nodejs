@@ -10,6 +10,7 @@ const main = async () =>{
     const tareas = new Tareas()
     const tareas_db = leerDB()
     if(tareas_db){
+        tareas.cargarTareasFromArray( tareas_db)
     }
     await pause()
 
@@ -27,7 +28,7 @@ const main = async () =>{
             break;
         }
 
-        //  guardarDB(tareas.listadoArr)
+          guardarDB(tareas.listadoArr)
         await pause()
         if(output.option !=="0"){
             console.log(output)
