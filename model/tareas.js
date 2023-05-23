@@ -57,7 +57,10 @@ class Tareas {
         })
 
     }
-    borrarTarea(){
+    borrarTarea(id=""){
+        if(this._listado[id]){
+            delete this._listado[id]
+        }
         console.log("hola")
     }
 }

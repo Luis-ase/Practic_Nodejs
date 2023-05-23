@@ -1,5 +1,5 @@
 const {guardarDB,leerDB} = require("./brackets/read_save")
-const {inquirerMenu, pause ,leerinput} = require("./menu/inquirer")
+const {inquirerMenu, pause ,leerinput, listadoTareasBorrar} = require("./menu/inquirer")
 
 const Tareas = require("./model/tareas")
 
@@ -29,7 +29,11 @@ const main = async () =>{
                 tareas.listadoPendienteCompletados(true)
                 break
             case 4:
-                tareas.listadoPendienteCompletados(false)  
+                tareas.listadoPendienteCompletados(false)    
+            break;
+            case 6:
+                const id  = await listadoTareasBorrar(tareas.listadoArr)   
+                console.log(id)
             break;
         }
 
