@@ -40,18 +40,17 @@ class Tareas {
         let numero = 0
         this.listadoArr.forEach((tarea) => {
             const {completadoEn, desc} = tarea
-            const state = completadoEn ? "Completada" : "Pendiente"
+            const state = completadoEn ? "Completada".green : "Pendiente".red
             if(completadas ){
-                if(completadoEn ){
-                    console.clear()
+                if( completadoEn ){
                     numero +=1
-                    let leer = `${numero}. ${desc}: ${state}`.green
+                    let leer = `${numero}. ${desc}: ${state}`
                   console.log(leer)
                 }
             }else{
-                if (!completadoEn) {
+                if ( !completadoEn ) {
                     numero +=1
-                    console.log(`${numero}. ${desc}: ${state}`.red)
+                    console.log(`${numero}. ${desc}: ${state}`)
                 }
             }
         })
@@ -62,6 +61,22 @@ class Tareas {
             delete this._listado[id]
         }
         console.log("hola")
+    }
+
+    compleatar_O_pendiente(ids=[]){
+        ids.forEach((tareas) =>{
+            const tarea = this._listado[tareas];
+            if(!tarea.completadoEn){
+                tarea.completadoEn = new Date().toISOString()
+            }
+        })
+
+        this.listadoArr.forEach((tarea)=>{
+            if(! ids.includes(tarea.id)){
+                 this._listado[tarea.id].completadoEn = null
+            }
+        })
+
     }
 }
 

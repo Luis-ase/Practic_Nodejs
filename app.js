@@ -35,11 +35,16 @@ const main = async () =>{
                 break
             case 4:
                 tareas.listadoPendienteCompletados(false)    
-            break;
+                break;
             case 5:
                const idx = await listadoTareasCompleatar(tareas.listadoArr);
-               console.log(idx)
-            break;
+               
+               if(idx.ids){
+                   console.log(idx.ids)
+                    tareas.compleatar_O_pendiente(idx.ids)
+               }
+               
+                break;
             case 6:
                 const id  = await listadoTareasBorrar(tareas.listadoArr) 
                 const ok = await confirmarEliminacion("Estas seguro")  
