@@ -1,5 +1,5 @@
 const {guardarDB,leerDB} = require("./brackets/read_save")
-const {inquirerMenu, pause ,leerinput, listadoTareasBorrar} = require("./menu/inquirer")
+const {inquirerMenu, pause ,leerinput, listadoTareasBorrar,confirmarEliminacion} = require("./menu/inquirer")
 
 const Tareas = require("./model/tareas")
 
@@ -32,8 +32,14 @@ const main = async () =>{
                 tareas.listadoPendienteCompletados(false)    
             break;
             case 6:
-                const id  = await listadoTareasBorrar(tareas.listadoArr)   
-                console.log(id)
+                const id  = await listadoTareasBorrar(tareas.listadoArr) 
+                const ok = await confirmarEliminacion("Estas seguro")  
+                
+                if(id.delete === "0"){
+                    if(ok){
+                        tareas.borrarTarea(id.delete)
+                    }
+                }
             break;
         }
 
@@ -41,7 +47,7 @@ const main = async () =>{
           await pause()
     }    
     
-    
+
 
 }
 
